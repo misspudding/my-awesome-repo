@@ -1,28 +1,44 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+      <router-link to="/firstTable">firstTable</router-link>
+      <router-link to="/firstTableView">firstTableView</router-link>
+      <router-view></router-view>
+      <!-- <first-table></first-table> -->
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import FirstTable from './components/firstTable.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // FirstTable
+
+  },
+  data() {
+    return {
+
+    }
+
+  },
+  methods: {
+
   }
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+@import '@/reset.scss';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+
 </style>

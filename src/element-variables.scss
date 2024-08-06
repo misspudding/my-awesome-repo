@@ -1,0 +1,290 @@
+/* 重置主题色变量 */
+$--color-primary: #4285f4;
+$--color-black: #333333;
+$--color-danger: #fc7980;
+$--color-warning: #f59a23;
+$--table-header-background-color: #f6faff;
+$--table-header-font-color: #555;
+$--table-font-color: $--color-black;
+$--button-mini-padding-vertical: 4px;
+$--button-mini-padding-horizontal: 12px;
+$--button-padding-vertical: 9px;
+$--button-padding-horizontal: 16px;
+$--tooltip-fill: #555;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";
+
+:root,:host{
+  //字体大小
+  --fs-small: 12px;
+  --fs-base: 14px;
+  --fs-medium: 16px;
+  --fs-large: 18px;
+  --fs-extra-large: 20px;
+  --fl-h: 1.5;
+  --fl-h2: 2;
+  --fw-500: 500;
+  --fw-700: 700;
+  --fw-bolder: bolder;
+
+  //颜色
+  --cr-black: #{$--color-black};
+  --cr-primary: #{$--color-primary};
+  --cr-danger: #{$--color-danger};
+  --cr-warning: #{$--color-warning};
+  --cr-success: #7fbe26;
+  --cr-blue: #14cce3;
+  --cr-info: #666;
+  --cr-title: #151933;
+  --cr-number: #44475c;
+  --cr-primary-bg: #ecf3fe;
+  --cr-white: #fff;
+  --cr-line: #d7d7d7;
+  --cr-bg: #f3f4f7;
+  //以下颜色用于修改各主色的透明度
+  --alpha: 0.1;
+  --cr-primary-r: 66, 133, 244;
+  --cr-primary-rgba:rgba(var(--cr-primary-r),var(--alpha));
+  --cr-danger-r: 252, 121, 128;
+  --cr-danger-rgba:rgba(var(--cr-danger-r),var(--alpha));
+  --cr-warning-r: 245, 154, 35;
+  --cr-warning-rgba:rgba(var(--cr-warning-r),var(--alpha));
+  --cr-success-r: 127, 190, 38;
+  --cr-success-rgba:rgba(var(--cr-success-r),var(--alpha));
+  --cr-info-r: 51, 51, 51;
+  --cr-info-rgba:rgba(var(--cr-info-r),var(--alpha));
+  --cr-blue-r: 20, 204, 227;
+  --cr-blue-rgba:rgba(var(--cr-blue-r),var(--alpha));
+
+  //圆角
+  --radius2: 2px;
+  --radius4: 4px;
+  --radius8: 8px;
+  --radius50: 50%;
+
+  //间距
+  --sp6: 6px;
+  --sp8: 8px;
+  --sp10: 10px;
+  --sp12: 12px;
+  --sp16: 16px;
+  --sp20: 20px;  
+  --sp24: 24px;
+  --sp32: 32px;
+  --sp40: 40px;
+  --pd-vh:6px 18px;//按钮内间距
+
+  //阴影
+  --bs: 0 0 10px 0 #f4f5f6; 
+
+
+
+
+    //==============引用变量说明：var(--变量)==================
+}
+
+//水平布局
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+//垂直布局
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+//容器
+.container {
+    min-height: 100%;
+    padding: var(--sp20);
+    background: var(--cr-bg);
+}
+
+//白色圆角卡片
+.card-wrapper{
+  background: #fff;
+  border-radius: var(--radius8);
+}
+//模块标题
+.mod-title {
+    color: var(--cr-title);//#34495e;
+    padding-left: var(--sp12);
+    font-weight: var(--fw-700);
+    line-height: var(--fl-h2);
+    text-align: left;
+    margin-right: auto;
+    position: relative;
+    &::before{
+      content: '';
+      width: 4px;
+      height: 12px;
+      border-radius:var(--radius4);
+      background: #409EFF;
+      position: absolute;
+      left:0;
+      top:50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  //按钮(表格上方按钮)
+  .btn-mini {
+    font-size: var(--fs-small);
+    font-weight: normal;
+    padding: var(--pd-vh);
+    margin-right: var(--pd-v-20);
+  }
+
+  //表格内操作按钮
+  .btn-danger-action, .btn-danger-action:hover,.btn-danger-action:focus{
+    padding: 0 6px;
+    border: none;
+    background: none;
+    color: var(--cr-danger);
+  }
+  .btn-primary-action, .btn-primary-action:hover, .btn-primary-action:focus{
+    padding: 0 6px;
+    border: none;
+    background: none;
+    color: var(--cr-primary);
+  }
+
+  //白色按钮
+  .btn-white {
+    background: var(--cr-white);
+    color: var(--cr-primary);
+    border: none;
+    &:hover,&:focus{
+        color: var(--cr-primary);
+        background: var(--cr-white);
+    }
+  }
+
+  //白色按钮加阴影
+  .btn-white-show {
+    background: var(--cr-white);
+    color: var(--cr-primary);
+    box-shadow: var(--bs);
+    border: none;
+    &:hover,&:focus{
+        color: var(--cr-primary);
+        background: var(--cr-white);
+    }
+  }
+
+  //一个或更多按钮居中显示
+  .flex-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .btn{
+      margin: 0 var(--sp10);
+    }
+  }
+
+  //文字超出一行省略号隐藏
+  .text-hide {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  //文字超出两行省略号隐藏
+  .text-lines-hide {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+  }
+
+  //状态颜色
+  .sc-default {//主题色
+    color: var(--cr-primary);
+  }
+  .sc-danger {
+    color: var(--cr-danger);
+  }
+  .sc-success {
+    color: var(--cr-success);
+  }
+  .sc-warning {
+    color: var(--cr-warning);
+  }
+  .sc-cancel {
+    color: var(--cr-black);
+  }
+  .sc-pass {
+    color: var(--cr-blue);
+  }
+
+  //状态带背景色
+  .status-block {
+    display: inline-block;
+    font-size: var(--fs-small);
+    padding: 6px var(--sp16);
+    border-radius: var(--radius4);
+  }
+  .sc-default-block {//主题色
+    border: var(--cr-primary);
+    color: var(--cr-primary);
+    background: var(--cr-primary-rgba);
+  }
+  .sc-danger-block {
+    border: var(--cr-danger);
+    color: var(--cr-danger);
+    background: var(--cr-danger-rgba);
+  }
+  .sc-success-block {
+    border: var(--cr-success);
+    color: var(--cr-success);
+    background: var(--cr-success-rgba);
+  }
+  .sc-warning-block {
+    border: var(--cr-warning);
+    color: var(--cr-warning);
+    background: var(--cr-warning-rgba);
+  }
+  .sc-cancel-block {
+    border: var(--cr-cancel);
+    color: var(--cr-cancel);
+    background: var(--cr-cancel-rgba);
+  }
+  .sc-pass-block {
+    border: var(--cr-pass);
+    color: var(--cr-pass);
+    background: var(--cr-pass-rgba);
+  }
+  //重置tab的样式(在el-tabs添加reset-tabs类，以免污染到默认的组件样式)
+  .reset-tabs .el-tabs__nav {
+    margin-left: var(--sp32);
+  }
+  .reset-tabs .el-tabs__item {
+    height: 45px;
+  }
+  .reset-tabs .el-tabs__item.is-active {
+    font-weight: var(--fw-700);
+  }
+  .reset-tabs .el-tabs__active-bar {
+    height: 4px;
+    border-radius: var(--radius2);
+  }
+  .reset-tabs .el-tabs__nav-wrap::after {
+    height: 1px;
+  }
+  .reset-tabs .el-tabs__header {
+    margin: 0;
+  }
+
+  //重置翻页(添加多一个父级pager,以免污染到默认组件)
+  .pager .el-pagination {
+    text-align: right;
+    margin-top: var(--sp10);
+    
+  }

@@ -1,0 +1,22 @@
+$title-color:#f00;
+
+.card-title {
+    color: var(--cr-danger);//#34495e;
+    position: relative;
+    padding-left:20px;
+    text-align: left;
+    margin-right: auto;
+    // font-size: var(--mod-title);
+    &::before{
+      position: absolute;
+      content: '';
+      left:0;
+      top:50%;
+      width: 6px;
+      height: 24px;
+      border-radius: 10px;
+      transform: translateY(-50%);
+      text-align: left;
+      background: #409EFF;
+    }
+  }
