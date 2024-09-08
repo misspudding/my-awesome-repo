@@ -1,11 +1,21 @@
+/*
+ * @Author: chenxiaoqian 472979229@qq.com
+ * @Date: 2024-04-16 23:17:14
+ * @LastEditors: chenxiaoqian 472979229@qq.com
+ * @LastEditTime: 2024-08-14 00:25:21
+ * @FilePath: \my-element-ui-project\src\router\index.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 // import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HelloWorld from '@/components/HelloWorld.vue'
 import About from '@/components/about.vue'
 import initForm from '@/components/initForm.vue'
 import tableF from '@/components/tableF.vue'
-import firstTable from '@/components/firstTable.vue'
 import firstTableView from '@/components/firstTableView.vue'
+//页面
+import firstTable from '@/view/firstTable.vue'
+import secondTable from '@/view/secondTable.vue'
 import Vue from "vue";
 Vue.use(VueRouter)
 // 定义路由
@@ -42,6 +52,12 @@ const routes = [
         path: '/firstTableView',
         name: 'firstTableView',
         component: firstTableView,
+        // meta: { requiresAuth: true } // 你可以在这里添加路由元信息，比如是否需要认证
+    },{
+        //开始
+        path: '/secondTable',
+        name: 'secondTable',
+        component: secondTable,
         // meta: { requiresAuth: true } // 你可以在这里添加路由元信息，比如是否需要认证
     },
     // {

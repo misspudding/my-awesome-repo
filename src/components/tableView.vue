@@ -2,7 +2,7 @@
   <div class="table-wrapper">
     <div class="btn-end">
       <div class="mod-title">
-        {{ title }}
+        {{ title }}==={{ filterOptions }}
       </div>
       <div
         v-if="getStatus"
@@ -21,11 +21,11 @@
           <div>剩余工期0</div>
         </div>
       </div>
-      <template v-if="!isViewMode">
+      <!-- <template v-if="!isViewMode">
         <el-button type="primary" class="mod-btn" @click="handleAddClick">
           <i class="el-icon-plus"></i>新增
         </el-button>
-      </template>
+      </template> -->
     </div>
     <el-table
       :data="localTableData"
@@ -347,7 +347,7 @@
 
 
 <script>
-
+import { mapGetters } from 'vuex';
 export default {
   props: {
     tableData: {
@@ -419,6 +419,7 @@ export default {
 
 
 computed: {
+  ...mapGetters('selectTableData', ['filterOptions', 'selectedColumns']),
     getStatus() {
       return  this.name === '持续工作' &&
         [          '持续工作（含许可证作业的工单）',
@@ -428,6 +429,7 @@ computed: {
     },
   },
   watch: {
+    
     tableData: {
       immediate: true,
       handler(newVal) {
@@ -437,15 +439,15 @@ computed: {
   },
 
   methods: {
-    getRowClass({ row }) {
-      // 根据工期设置表格行的字体颜色
-      if (row.duration < 10) {
-        return 'danger-row';
-      } else if (row.duration < 24) {
-        return 'warning-row';
-      }
-      return '';
-    },
+    // getRowClass({ row }) {
+    //   // 根据工期设置表格行的字体颜色
+    //   if (row.duration < 10) {
+    //     return 'danger-row'
+    //   } else if (row.duration < 24) {
+    //     return 'warning-row';
+    //   }
+    //   return '';
+    // },
     handleEdit(index, row) {
         console.log('aaa')
       // 编辑
@@ -486,6 +488,7 @@ handleCancelEdit() {
       this.editIndex = -1;
     },
 
+    
     handleDelete(index, row) {
       // 删除表格行
       this.$confirm('确定要删除这条记录吗？', '确认删除', {
@@ -539,6 +542,11 @@ handleCancelEdit() {
 </script>
 
 <style scoped lang="scss">
+.mod-btn{
+  color: var(--cr-success);
+  border-radius: var(--radius50);
+  background: var(--cr-warning-rgba);
+}
 // .table-wrapper {
 //   margin-top: 20px;
 // }

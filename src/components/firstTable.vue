@@ -19,7 +19,6 @@
           <toggle-button @changeTab="changeTab"></toggle-button>
         <!-- <task-table :tableData="tableData" :tableColumns="tableColumns" :total="total" isViewMode @handleDelete="handleDelete" title="新增的重要工作" @click="updateList"></task-table>
         <task-table :tableData="tableData" :tableColumns="tableColumns" :total="total" :isViewMode="false" title="下一个工作日计划执行的工作" @click="updateList"></task-table> -->
-        isViewMode{{isViewMode}}
         <table-view 
         ref="childComp"
         :tableData="tableData" 
@@ -118,6 +117,7 @@ import SearchParams from './searchParams.vue';
 // import taskTable from './taskTable.vue'
 import tableView from './tableView.vue'
 import toggleButton from './toggleButton.vue'
+import tableColumnsConfig from './tableColumns.js'
 export default {
   components: {
     // taskTable,
@@ -217,12 +217,23 @@ export default {
           planReminder: '无',
           executionStatus: '正常'
         }
-      ]
+      ],
+      selectedModule: 'todayRisk', // Default module
+      selectedSituation: 'situation1', // Default situation
     }
   },
-  created() {
-    this.tableColumns = this.allColumns.map(it=>it.prop); // 初始值为 allColumns
+  computed: {
+    modules() {
+      return tableColumnsConfig;
+    },
+    tableColumns() {
+      console.log('222',this.modules[this.selectedModule][this.selectedSituation])
+      return this.selectedModule ? this.modules[this.selectedModule][this.selectedSituation].map(it=>it.prop) : [];
+    },
   },
+  // created() {
+  //   this.tableColumns = this.allColumns.map(it=>it.prop); // 初始值为 allColumns
+  // },
   // computed: {
   //   tableColumns() {
   //     return this.selectedColumns.length === 0 ? this.allColumns : this.allColumns.filter(column => this.selectedColumns.includes(column.label));
@@ -252,7 +263,7 @@ export default {
       this.selectedColumns = this.allColumns.map(column => column.label);
     },
     saveConfig() {
-      this.tableColumns = this.allColumns.filter(column => this.selectedColumns.includes(column.label));
+      // this.tableColumns = this.allColumns.filter(column => this.selectedColumns.includes(column.label));
       this.dialogVisible = false;
     },
     handleExport(){
